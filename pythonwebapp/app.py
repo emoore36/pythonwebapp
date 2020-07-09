@@ -1,6 +1,6 @@
 from flask import Flask
-from pythonwebapp.views.index import print as index_print
-from pythonwebapp.views.create import print as create_print
+from views.index import print as index_print
+from views.create import print as create_print
 
 app = Flask(__name__)
 

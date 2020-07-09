@@ -1,12 +1,13 @@
-from pythonwebapp.models.AbilityScoreList import AbilityScoreList
-import random
+from models.AbilityScoreList import AbilityScoreList
+import random, json
 
 class Character:
-    # Name = ""
-    # Race = ""
-    # Class = ""
-    # Scores = AbilityScoreList()
-    # Background = ""
+
+    Name: str
+    Race: str
+    Class: str
+    Scores: AbilityScoreList
+    Background: str
 
     def __init__(self, name="", race="", charClass="", scores=AbilityScoreList(0,0,0,0,0,0), background=""):
         self.Name = name
