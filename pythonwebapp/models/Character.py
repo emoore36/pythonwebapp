@@ -1,4 +1,5 @@
 from models.AbilityScoreList import AbilityScoreList
+from models.SkillList import SkillList
 import random, json
 
 class Character:
@@ -7,17 +8,16 @@ class Character:
     Race: str
     Class: str
     Scores: AbilityScoreList
+    Skills: SkillList
     Background: str
 
-    def __init__(self, name="", race="", charClass="", scores=AbilityScoreList(0,0,0,0,0,0), background=""):
+    def __init__(self, name="", race="", charClass="", scores=AbilityScoreList(), skills=SkillList(), background=""):
         self.Name = name
         self.Race = race
         self.Class = charClass
         self.Scores = scores
+        self.Skills = skills
         self.Background = background
-
-    def print(self):
-        return str.format("Character: Name: {}, Race: {}, Class: {}, Scores: {}, Background: {}", self.Name, self.Race, self.Class, self.Scores.print(), self.Background)
 
     def generateID(self):
         chars="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
@@ -29,4 +29,4 @@ class Character:
         return finalStr
 
     def data(self):
-        return { "name": self.Name, "race": self.Race, "class": self.Class, "scores": self.Scores.data(), "background": self.Background}
+        return { "name": self.Name, "race": self.Race, "class": self.Class, "scores": self.Scores.data(), "skills": self.Skills.data(), "background": self.Background}

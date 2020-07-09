@@ -12,8 +12,6 @@ class AbilityScoreUpdater:
         
         # let's start with race
         if race.__contains__("hill_dwarf"):
-            print(str.format("Contitution is {}"), scores.Constitution)
-            exit()
             scores.Constitution += 2
             scores.Wisdom += 1
         if race.__contains__("mountain_dwarf"):

@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request
 from models.Character import Character
 from models.AbilityScoreList import AbilityScoreList
 from util.AbilityScoreUpdater import AbilityScoreUpdater
+from models.SkillList import SkillList
 
 print = Blueprint(__name__, __name__, template_folder='templates')
 
@@ -20,13 +21,16 @@ def show():
         charWis = int(request.form.get('wis'))
         charCha = int(request.form.get('cha'))
         abilityScores = AbilityScoreList(charStr, charDex, charCon, charInt, charWis, charCha)
+        skills = SkillList()
 
         charBack = request.form.get('background')
 
-        formChar = Character(charName, charRace, charClass, abilityScores, charBack)
+        formChar = Character(charName, charRace, charClass, abilityScores, skills, charBack)
         
         updater = AbilityScoreUpdater()
         updater.update(formChar)
+
+        return str(formChar.data())
 
         file = open('pythonwebapp/characters/{}.dndchar'.format(formChar.generateID()), "w")
         file.write(str(formChar.data()))
